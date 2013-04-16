@@ -1,5 +1,5 @@
 
-$(document).on('submit', 'form', function(event){
+$(document).on('submit', '#send_tweet', function(event){
   
   event.preventDefault();
 
@@ -7,11 +7,11 @@ $(document).on('submit', 'form', function(event){
   data = $target.serialize();
 
   $.ajax({
-    url: '/tweet',
+    url: '/tweet/new',
     type: 'post',
     data: data,
-    success: function() {
-        $('.container').append("<h2>Tweeeeeeeted!</h2>");
+    success: function(text) {
+        $('.container').append("<h2>"+text+"</h2>");
     }
   });
   

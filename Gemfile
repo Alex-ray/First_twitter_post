@@ -19,6 +19,7 @@ gem 'shotgun'
 
 gem 'twitter'
 gem 'oauth'
+gem 'debugger'
 
 group :test do
   gem 'faker'

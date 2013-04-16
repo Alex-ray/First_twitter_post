@@ -22,22 +22,7 @@ require 'erb'
 
 require 'twitter'
 require 'oauth'
-
-#Twitter gem configuration
-Twitter.configure do |config|
-  config.consumer_key = 'O1JuV5fK5suujkQApZFCw'
-  config.consumer_secret = 'GrGjnVo3zmTho5HZavcJKfqg4KtlcCkCBpt5HZFM84'
-  config.oauth_token = '485362969-lkrCwNNXQA7mhZSDJrriYF3o2kH7A3L8uuPLqAoQ'
-  config.oauth_token_secret = 'x670JsNnWSiqvnabwtYTWMh8O8HSEqeDOba5E6Ho'
-end
-
-#Oauth configuration
-if Sinatra::Application.development?
-  twitter_data = YAML.load_file(APP_ROOT.join('config',
-  'twitter.yml'))
-  ENV['CONSUMER_KEY'] = twitter_data['consumer_key']
-  ENV['CONSUMER_SECRET'] = twitter_data['consumer_secret']
-end
+require 'debugger'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -50,3 +35,17 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+#Oauth configuration
+if Sinatra::Application.development?
+  twitter_data = YAML.load_file(APP_ROOT.join('config',
+  'twitter.yml'))
+  ENV['CONSUMER_KEY'] = twitter_data['consumer_key']
+  ENV['CONSUMER_SECRET'] = twitter_data['consumer_secret']
+end
+
+#Twitter gem configuration
+Twitter.configure do |config|
+  config.consumer_key = twitter_data['consumer_key']
+  config.consumer_secret = twitter_data['consumer_secret']
+end
