@@ -7,7 +7,7 @@ get '/' do
 end
 
 post '/tweet/new' do
-  tweet = twitter_oauth.update(params[:text])
+  tweet = twitter_oauth.update(params[:tweet][:text])
   if tweet
     tweet.text
   else
