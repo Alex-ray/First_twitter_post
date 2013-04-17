@@ -40,21 +40,11 @@ require APP_ROOT.join('config', 'database')
 if Sinatra::Application.development?
   twitter_data = YAML.load_file(APP_ROOT.join('config',
   'twitter.yml'))
-  ENV['CONSUMER_KEY'] = twitter_data['consumer_key']
-  ENV['CONSUMER_SECRET'] = twitter_data['consumer_secret']
+  ENV['TWITTER_KEY']    = twitter_data['consumer_key']
+  ENV['TWITTER_SECRET'] = twitter_data['consumer_secret']
 end
 
-if Sinatra::Application.development?
-#Twitter gem configuration
-  Twitter.configure do |config|
-    config.consumer_key = twitter_data['consumer_key']
-    config.consumer_secret = twitter_data['consumer_secret']
-  end
-end
-
-if Sinatra::Application.production?
-  Twitter.configure do |config|
+Twitter.configure do |config|
   config.consumer_key = ENV['TWITTER_KEY']
   config.consumer_secret = ENV['TWITTER_SECRET']
-end
 end
