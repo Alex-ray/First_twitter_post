@@ -14,8 +14,8 @@ class TwitterOauth
 
   def consumer
     @consumer ||= OAuth::Consumer.new(
-      ENV['CONSUMER_KEY'], 
-      ENV['CONSUMER_SECRET'],
+      ENV['TWITTER_KEY'], 
+      ENV['TWITTER_SECRET'],
       {site: "https://api.twitter.com"}
     )
   end
