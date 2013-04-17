@@ -37,7 +37,7 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 require APP_ROOT.join('config', 'database')
 
 #Oauth configuration
-if Sinatra::Application.development?
+if Sinatra::Application.production?
   twitter_data = YAML.load_file(APP_ROOT.join('config',
   'twitter.yml'))
   ENV['CONSUMER_KEY'] = twitter_data['consumer_key']
