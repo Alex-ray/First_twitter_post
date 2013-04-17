@@ -16,8 +16,7 @@ post '/tweet/new' do
   if job_id
     job_id
   else
-    status 500
-    "something bad happened :("
+    501
   end
 end
 
@@ -31,5 +30,11 @@ get '/authorize_via_twitter/callback' do
 end
 
 get '/status/:job_id' do
-  job_is_complete(params[:job_id])
+  puts job_is_complete(params[:job_id])
+  if job_is_complete(params[:job_id])
+    return "done"
+  else
+    return "running"
+  end
+    "failed"
 end
