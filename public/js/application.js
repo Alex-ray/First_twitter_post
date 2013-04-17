@@ -10,8 +10,8 @@ $(document).on('submit', '#send_tweet', function(event){
     url: '/tweet/new',
     type: 'post',
     data: data,
-    success: function(text) {
-        $('.container').append("<h2>"+text+"</h2>");
+    success: function(job_id) {
+        $('.container').append("<h2>"+job_id+"</h2>");
     }
   });
   

@@ -19,6 +19,8 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'erb'
+require 'sidekiq'
+require 'redis'
 
 require 'twitter'
 require 'oauth'

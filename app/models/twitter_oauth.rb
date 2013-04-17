@@ -38,14 +38,25 @@ class TwitterOauth
     request_token.authorize_url
   end
 
-  def update *args
-    client.update(*args)
+  def update tweet
+    client.update(tweet)
+    User.find(@session[:user_id]).tweet(tweet)
   end
 
   def complete! params
     access_token = get_access_token(params["oauth_verifier"])
     @session[:oauth_token] = access_token.token
     @session[:oauth_secret] = access_token.secret
+    create_user
+  end
+
+  def create_user 
+    user = User.create(access_token: @session[:oauth_token], name: client.user.user_name)
+    @session[:user_id] = user.id
+  end
+
+  def logout 
+    @session.clear
   end
 
 end

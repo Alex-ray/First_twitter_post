@@ -6,10 +6,15 @@ get '/' do
   end
 end
 
+get '/logout' do
+  logout
+  redirect to "/"
+end
+
 post '/tweet/new' do
-  tweet = twitter_oauth.update(params[:tweet][:text])
-  if tweet
-    tweet.text
+  job_id = twitter_oauth.update(params[:tweet][:text])
+  if job_id
+    job_id
   else
     status 500
     "something bad happened :("
@@ -23,4 +28,8 @@ end
 get '/authorize_via_twitter/callback' do
   twitter_oauth.complete! params
   redirect "/"
+end
+
+get '/status/:job_id' do
+  job_is_complete(params[:job_id])
 end

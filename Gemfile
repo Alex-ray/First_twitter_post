@@ -19,6 +19,10 @@ gem 'shotgun'
 
 gem 'twitter'
 gem 'oauth'
+
+gem 'sidekiq'
+gem 'redis'
+
 gem 'debugger'
 gem 'rspec'
 
