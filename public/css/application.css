@@ -2,8 +2,64 @@
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  border: 3px solid #DB5846;
+  border-radius: 5px;
 }
+
 th {
   text-align: left;
 }
+
+.signin {
+  margin-top: 20px;
+}
+
+.signin h3 {
+  display: inline-block;
+}
+
+.signin form {
+  display: inline-block;
+  float: right;
+  margin-top: 18px;
+}
+
+button {
+  border: 0px;
+  border-radius: 20px;
+  background-color: #FFDC74;
+  color: #003142;
+  padding: 5px 10px;
+  box-shadow: 0px 0px 3px 3px #C29964;
+}
+
+#send_tweet {
+  margin-top: 20px;
+}
+
+#send_tweet button {
+  float: right;
+}
+
+#send_tweet input {
+  border: 0px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 3px 3px #003142;
+  padding-left: 5px;
+  height: 25px;
+}
+
+#send_tweet input:focus {
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+

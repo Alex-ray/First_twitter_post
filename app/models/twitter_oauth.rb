@@ -1,3 +1,5 @@
+enable :sessions
+
 class TwitterOauth
 
   def initialize(session, callback_url)
@@ -53,10 +55,12 @@ class TwitterOauth
   def create_user 
     user = User.create(access_token: @session[:oauth_token], name: client.user.user_name)
     @session[:user_id] = user.id
+    session[:user_id] = user.id
   end
 
   def logout 
     @session.clear
+
   end
 
 end

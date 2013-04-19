@@ -12,7 +12,11 @@ get '/logout' do
 end
 
 post '/tweet/new' do
-  job_id = twitter_oauth.update(params[:tweet][:text])
+  tweet = Tweet.create(description: params[:tweet][:text],
+    user: User.find(session[:user_id]))
+  return tweet.id
+  job_id = TweetWorker.perform_async(@session[:user_id], tweet.id)
+  return job_id
   if job_id
     job_id
   else

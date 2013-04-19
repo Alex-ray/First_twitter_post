@@ -12,5 +12,12 @@ class TweetWorker
     # actually make API call
     # Note: this does not have access to controller/view helpers
     # You'll have to re-initialize everything inside here
+
+    @client ||= Twitter::Client.new(
+      oauth_token: @session[:oauth_token],
+      oauth_token_secret: @session[:oauth_secret]
+    )
+
+    client.update(tweet.description)
   end
 end

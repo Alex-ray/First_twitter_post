@@ -18,7 +18,5 @@ helpers do
     return false if working.find { |worker, info| info["payload"]["jid"] == jid }
     true
   end
-
-
-
+  
 end

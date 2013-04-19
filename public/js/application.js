@@ -10,7 +10,9 @@ $(document).on('submit', '#send_tweet', function(event){
     type: 'post',
     data: data,
     success: function(job_id){
-      setTimeout(function(){ untilJobDone(job_id); }, 1000);
+      debugger;
+      console.log(job_id);
+      // setTimeout(function(){ untilJobDone(job_id); }, 1000);
     }
   });
 
